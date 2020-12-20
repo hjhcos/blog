@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2020/12/20 9:37
+# @Time    : 2020/12/20 23:39
 # @Author  : hjhcos
 # @Email   : hjhcos@hotmail.com
 # @File    : urls.py.py
 # --------------------------------
+
 from django.conf.urls import url
-from blog import views
+from api import views
 
 
 urlpatterns = [
-    url('^$', views.blog, name='blog'),
+    url('^$', views.api, name='api'),
 
 ]

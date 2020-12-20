@@ -31,26 +31,29 @@
     {#            搜索引擎#}
                 <form class="navbar-form navbar-right" action="https://www.baidu.com/s">
                     <div class="form-group">
-                        <input type="hidden" name="ie" value="utf-8">
-                        <input type="text" class="form-control" placeholder="search" name="wd">
-                        <input type="hidden" name="ct" value="2097152">
-                        <input type="hidden" name="si" value="hjhcos.cn">
+                        <label>
+                            <input type="hidden" name="ie" value="utf-8">
+                            <input type="text" class="form-control" placeholder="search" name="wd" value>
+                            <input type="hidden" name="ct" value="2097152">
+                            <input type="hidden" name="si" value="hjhcos.cn">
+                            <button type="submit" class="btn btn-success">搜索</button>
+                        </label>
                     </div>
-                    <button type="submit" class="btn btn-success">搜索</button>
                 </form>
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="#">首页</a></li>
-                    <li ><a href="#">博客</a></li>
-                    <li ><a href="#">api接口</a></li>
+                    <li class="active"><a href="/">首页</a></li>
+                    <li ><a href="/blog/">博客</a></li>
+                    <li ><a href="/api/">api接口</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>
     </nav>
 </header>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 col-md-12">
+<div class="container text-center">
+    <div class="row center-block">
+{#        TODO:如果屏幕小于1220 不显示阅读标签 只显示标题 或者 标题截切为三个字并显示阅读量#}
+        <div class="col-md-2 col-md-12">
 {#            我们可以用一个标识来决定显示blog、api、混合#}
 {#            TODO: 主题切换#}
             <ul class="list-group ">
@@ -78,8 +81,8 @@
             </ul>
 
         </div>
-
-        <div class="col-md-6 col-md-12">
+{#        TODO:如果屏幕小于980 不显示左右边框 只显示内容列表 col-md-offset-0 变为 col-md-offset-2#}
+        <div class="col-md-8 col-md-12 col-md-offset-0">
             
             {% block content %}
                 {#          TODO:显示文章列表#}
@@ -122,7 +125,7 @@
 
         </div>
 
-        <div class="col-md-3 col-md-12">
+        <div class="col-md-2 col-md-12">
             <div class="btn-block center-block">
                 <a href="#" class="img-transition ">
                     <img class="img-circle center-block img-thumbnail" src="/static/icon/my.png" alt="me" style="height: 64px; width: 64px">
