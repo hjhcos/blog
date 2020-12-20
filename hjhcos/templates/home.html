@@ -57,8 +57,7 @@
 {#            我们可以用一个标识来决定显示blog、api、混合#}
 {#            TODO: 主题切换#}
             <ul class="list-group ">
-{#                TODO: 设置博客类型#}
-                <a href="/" class="list-group-item active">{{ blogs_head }}</a>
+                <p class="list-group-item active">热门博客</p>
 {#                TODO: 添加该类型博客列表#}
                 {% for blog in blogs %}
                     <li class="list-group-item">
@@ -69,8 +68,7 @@
             </ul>
 
             <ul class="list-group">
-{#                TODO: 设置接口类型#}
-                <a href="/" class="list-group-item active">{{ apis_head }}</a>
+                <p class="list-group-item active">常用接口</p>
 {#                TODO: 添加该类型接口列表#}
                 {% for api in apis %}
                     <li class="list-group-item">
