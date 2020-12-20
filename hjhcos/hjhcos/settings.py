@@ -127,7 +127,55 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_FINDERS = [
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 
 ]
+
+# 日志文件
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # 是否禁用已经存在的日志器
+    'formatters': {  # 日志信息显示的格式
+        'verbose': {  # 详细格式
+            'format': '%(levelname)s %(asctime)s %(module)s %(lineno)d %(message)s'
+        },
+        'simple': {  # 简单格式
+            'format': '%(levelname)s %(module)s %(lineno)d %(message)s'
+        },
+    },
+    'filters': {  # 对日志进行过滤
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+
+    'handlers': {  # 日志处理方式
+        # 控制台输出
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        # 文件输出
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/file.log'),
+            'maxBytes': 300 * 1024 * 1024,
+            'backupCount': 10,
+            'formatter': 'verbose',
+        },
+    },
+    # 配置用哪几种 handlers 来处理日志
+    'loggers': {
+        # 类型 为 django 处理所有类型的日志， 默认调用
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',  # 日志最低接收级别
+            'propagate': True,  # 是否继续传递日志信息
+        },
+    }
+}

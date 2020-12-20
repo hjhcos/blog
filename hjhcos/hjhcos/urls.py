@@ -16,6 +16,64 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from django.shortcuts import render
+
+
+def home(request, *args, **kwargs):
+
+    blogs_head = '目录'
+
+    blogs = [
+        {
+            'url': '/',
+            'title': '文章标题1',
+            'read': 13,
+        },
+        {
+            'url': '/',
+            'title': '文章标题2',
+            'read': 12,
+        },
+        {
+            'url': '/',
+            'title': '文章标题3',
+            'read': 132,
+        },
+        {
+            'url': '/',
+            'title': '文章标题4',
+            'read': 136,
+        },
+    ]
+
+    apis_head = '目录'
+    apis = [
+        {
+            'url': '/',
+            'title': 'api1',
+            'read': 13,
+        },
+        {
+            'url': '/',
+            'title': 'api2',
+            'read': 12,
+        },
+        {
+            'url': '/',
+            'title': 'api3',
+            'read': 132,
+        },
+        {
+            'url': '/',
+            'title': 'api4',
+            'read': 136,
+        },
+    ]
+    return render(request, 'home.html', locals())
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', home),
+    url(r'^blog/', include('blog.urls')),
 ]
