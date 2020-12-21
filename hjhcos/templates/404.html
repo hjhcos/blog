@@ -1,0 +1,15 @@
+{% block main %}
+    <h1 >404</h1>
+    <h3 > 页面未能够找到！! !</h3>
+    <div >
+        实在对不起，该页面不存在，请检查url，如果没有问题，请在下面反馈一下，谢谢亲！
+        <form class="navbar-form" action="{% url 'feedback' %}" method="post">
+            <div class="form-group">
+                <label>
+                    <input type="text"  class="form-control" placeholder="请输入你反馈的内容..." name="fb"/>
+                    <button type="submit" class=" btn btn-primary">提交</button>
+                </label>
+            </div>
+        </form>
+    </div>
+{% endblock %}

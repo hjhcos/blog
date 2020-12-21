@@ -19,9 +19,17 @@ from django.contrib import admin
 from django.shortcuts import render
 
 
-def home(request, *args, **kwargs):
+def page_not_found(request):
+    return render(request, '404.html')
 
-    blogs_head = '目录'
+
+def feedback(request, **kwargs):
+    # with open('feedback.txt', 'a', encoding='utf8') as fd:
+    #     fd.write(fb)
+    return render(request, 'feedback.html')
+
+
+def home(request, *args, **kwargs):
 
     blogs = [
         {
@@ -46,35 +54,15 @@ def home(request, *args, **kwargs):
         },
     ]
 
-    apis_head = '目录'
-    apis = [
-        {
-            'url': '/',
-            'title': 'api1',
-            'read': 13,
-        },
-        {
-            'url': '/',
-            'title': 'api2',
-            'read': 12,
-        },
-        {
-            'url': '/',
-            'title': 'api3',
-            'read': 132,
-        },
-        {
-            'url': '/',
-            'title': 'api4',
-            'read': 136,
-        },
-    ]
     return render(request, 'home.html', locals())
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
+    url(r'^feedback/*?', feedback),
     url(r'^blog/', include('blog.urls', namespace='blog')),
-    url(r'^api/', include('api.urls', namespace='api'))
+    url(r'^api/', include('api.urls', namespace='api')),
 ]
+
+handler404 = page_not_found
