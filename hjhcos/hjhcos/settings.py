@@ -134,6 +134,12 @@ STATICFILES_DIRS = [
 
 ]
 
+# 媒体
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 # 日志文件
 
 LOGGING = {
