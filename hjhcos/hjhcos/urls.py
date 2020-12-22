@@ -16,10 +16,6 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-# 配置静态文件
-from django.conf.urls.static import static
-from django.conf import settings
-
 from django.shortcuts import render
 
 
@@ -28,36 +24,10 @@ def page_not_found(request):
 
 
 def feedback(request, **kwargs):
-    # with open('feedback.txt', 'a', encoding='utf8') as fd:
-    #     fd.write(fb)
     return render(request, 'feedback.html')
 
 
 def home(request, *args, **kwargs):
-
-    blogs = [
-        {
-            'url': '/',
-            'title': '文章标题1',
-            'read': 13,
-        },
-        {
-            'url': '/',
-            'title': '文章标题2',
-            'read': 12,
-        },
-        {
-            'url': '/',
-            'title': '文章标题3',
-            'read': 132,
-        },
-        {
-            'url': '/',
-            'title': '文章标题4',
-            'read': 136,
-        },
-    ]
-
     return render(request, 'home.html', locals())
 
 
@@ -67,6 +37,6 @@ urlpatterns = [
     url(r'^feedback/*?', feedback),
     url(r'^blog/', include('blog.urls', namespace='blog')),
     url(r'^api/', include('api.urls', namespace='api')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
 handler404 = page_not_found
