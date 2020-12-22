@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'i32ttuirh+%n4k_t!dij4apzmupe1hm0fhpsx2bz$tl(p_)3t%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*", ]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -59,7 +59,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-
         ],
         'APP_DIRS': True,
         'OPTIONS': {
