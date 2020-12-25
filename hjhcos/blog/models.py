@@ -5,13 +5,18 @@ from django.db import models
 
 class Blog(models.Model):
 
-    uid = models.AutoField(primary_key=True)
-
-    date = models.CharField(max_length=11, verbose_name='日期')   # 2020-12-30
-    title = models.CharField(max_length=50, verbose_name='博客标题', unique=True)
-    tag = models.CharField(max_length=8, verbose_name='标签')
+    uid = models.AutoField(primary_key=True, verbose_name='接口id')
+    root = models.CharField(max_length=5, default='blog')
+    date = models.DateField(auto_now_add=True, verbose_name='日期')
+    title = models.CharField(max_length=10, verbose_name='标题')
+    tag = models.CharField(max_length=10, verbose_name='标签')
+    url = models.URLField(verbose_name='blog_URL')
 
 
 class File(models.Model):
-    api = models.OneToOneField(to='Blog', to_field='title')
-    # file = models.FileField(verbose_name='api')
+
+    title = models.CharField(max_length=10, verbose_name='标题')
+    read = models.BigIntegerField(verbose_name='阅读量')
+    # file will be saved to MEDIA_ROOT/blog/2020/12/30
+    file = models.FileField(upload_to='blog/%Y/%m/%d/')
+    api = models.ForeignKey(Blog)

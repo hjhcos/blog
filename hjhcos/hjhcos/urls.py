@@ -20,15 +20,18 @@ from django.shortcuts import render
 
 
 def page_not_found(request):
+    html = '404'
     return render(request, '404.html')
 
 
 def feedback(request, **kwargs):
+    html = '反馈'
     return render(request, 'feedback.html')
 
 
 def home(request, *args, **kwargs):
-    return render(request, 'home.html', locals())
+    html = '首页'
+    return render(request, 'base/base.html', locals())
 
 
 urlpatterns = [

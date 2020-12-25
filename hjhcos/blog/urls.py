@@ -10,5 +10,6 @@ from blog import views
 
 urlpatterns = [
     url('^$', views.blog, name='blog'),
+    url('^write/', views.write),
 
 ]
