@@ -11,5 +11,5 @@ from blog import views
 urlpatterns = [
     url('^$', views.blog, name='blog'),
     url('^write/', views.write),
-
+    url('^(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<title>.*?)$', views.display),
 ]

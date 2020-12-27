@@ -20,7 +20,7 @@
 <body>
 
 <header style="height: 6em; display: block">
-    <nav class="bg-info navbar-fixed-top ">
+    <nav class="bg-info">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -61,7 +61,7 @@
         {#            我们可以用一个标识来决定显示blog、api、混合#}
         {#            TODO: 主题切换#}
                     <ul class="list-group ">
-                        <p class="list-group-item active">热门</p>
+                        <p class="list-group-item active">最新</p>
         {#                TODO: 添加该类型博客列表#}
                         {% for blog in blogs %}
                             <li class="list-group-item">
@@ -81,15 +81,15 @@
                         {% for blog in blogs %}
                             <div class="panel panel-default">
                                 <div class="panel-heading text-center">
-                                    <a href="#" style="text-decoration: none">
-                                        <h4>文章标题</h4>
-                                        <span class="label label-danger">文章标签</span>
-                                        <span class="label label-info">2020-12-20</span>
+                                    <a href="{{ blog.url }}" style="text-decoration: none">
+                                        <h4>{{ blog.title }}</h4>
+                                        <span class="label label-danger">{{ blog.tag }}</span>
+                                        <span class="label label-info">{{ blog.date }}</span>
                                     </a>
                                 </div>
 
                                 <div class="panel-body">
-                                        ....{{ blog.content }}
+                                        {{ blog.text }}...
                                 </div>
                             </div>
                         {% endfor %}
@@ -112,7 +112,8 @@
             </div>
             {#        关于我 联系我 个人简介#}
             <div class="col-md-2 col-md-12">
-                <div class="btn-block center-block">
+                {% block right_win %}
+                    <div class="btn-block center-block">
                     <a href="#" class="img-transition ">
                         <img class="img-circle center-block img-thumbnail" src="{% static 'icon/my.png' %}" alt="me" style="height: 64px; width: 64px">
                     </a>
@@ -135,18 +136,19 @@
                         </ul>
                     </div>
                 </div>
+                {% endblock %}
             </div>
         </div>
     </div>
 {% endblock %}
 
-<footer class="panel-footer">
-    <div class="container" style="color: grey">
-        <div class="row">
+<div style="position: fixed; margin: 10px 20px; bottom: 0;">
+    <div style="color: grey; padding: 10px 15px 0">
+        <div>
             <p>© hjhcos.cn</p>
         </div>
     </div>
-</footer>
+</div>
 
 </body>
 </html>

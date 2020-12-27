@@ -18,6 +18,8 @@ from django.contrib import admin
 
 from django.shortcuts import render
 
+from blog import process
+
 
 def page_not_found(request):
     html = '404'
@@ -31,6 +33,8 @@ def feedback(request, **kwargs):
 
 def home(request, *args, **kwargs):
     html = '首页'
+    blogs = process.blog.get_all()
+    print(blogs)
     return render(request, 'base/base.html', locals())
 
 
