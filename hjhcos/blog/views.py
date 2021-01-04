@@ -1,21 +1,29 @@
 from django.shortcuts import render, HttpResponse
 from blog import process
+from urllib import request
+import markdown
 
 # Create your views here.
 
 
-def blog(request, *args, **kwargs):
+def blog(requests, *args, **kwargs):
     html = 'blog'
-    return render(request, 'blog.html', locals())
+    return render(requests, 'blog.html', locals())
 
 
-def write(request):
+def write(requests):
     # TODO:写文章
     html = 'write'
-    return render(request, 'blog/write.html', locals())
+    return render(requests, 'blog/write.html', locals())
 
 
-def display(request, year, month, day, title):
+def display(requests, year, month, day, title):
     # TODO:文章内容加载
-    return HttpResponse(process.blog.show_tags())
+    # blog / 2020 / 12 / 27 / blog
+    url = f'blog/{year}/{month}/{day}/{title}'
+    file = process.blog.get_file(url.encode('utf8'))
+    print(file)
+    html = request.urlopen(file).read().decode('utf-8')
+    html = markdown.markdown(html)
+    return HttpResponse(html)
 

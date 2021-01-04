@@ -20,6 +20,11 @@ class Blog:
         return tags
 
     @staticmethod
+    def get_file(url):
+        """ 获取文件地址"""
+        return models.Blog.objects.filter(url=url).first().file
+
+    @staticmethod
     def get_single_all(title):
         """ 获取单文件所有信息 Blog.object"""
         return models.Blog.objects.filter(title=title).first()
