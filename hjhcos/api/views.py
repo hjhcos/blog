@@ -4,5 +4,5 @@ from django.shortcuts import render
 
 
 def api(request, *args, **kwargs):
-    html = 'api'
+    title = 'api'
     return render(request, 'api.html', locals())

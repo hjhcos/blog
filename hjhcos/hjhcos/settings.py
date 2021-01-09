@@ -126,15 +126,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, '../collectedstatic')
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'hjhcos/static'),
-    os.path.join(BASE_DIR, 'api/static'),
-    os.path.join(BASE_DIR, 'blog/static'),
-]
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # 媒体
 
@@ -143,7 +141,7 @@ STATICFILES_DIRS = [
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,  # 是否禁用已经存在的日志器
+    'disable_existing_loggers': False,  # 是否禁用已经存在的日志器                                   
     'formatters': {  # 日志信息显示的格式
         'verbose': {  # 详细格式
             'format': '%(levelname)s %(asctime)s %(module)s %(lineno)d %(message)s'

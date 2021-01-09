@@ -7,13 +7,13 @@ import markdown
 
 
 def blog(requests, *args, **kwargs):
-    html = 'blog'
+    title = 'blog'
     return render(requests, 'blog.html', locals())
 
 
 def write(requests):
     # TODO:写文章
-    html = 'write'
+    title = 'write'
     return render(requests, 'blog/write.html', locals())
 
 
@@ -25,5 +25,6 @@ def display(requests, year, month, day, title):
     print(file)
     html = request.urlopen(file).read().decode('utf-8')
     html = markdown.markdown(html)
-    return HttpResponse(html)
+
+    return render(requests, 'blog/display.html', locals())
 

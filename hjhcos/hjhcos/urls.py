@@ -22,20 +22,20 @@ from blog import process
 
 
 def page_not_found(request):
-    html = '404'
+    title = '404'
     return render(request, '404.html')
 
 
 def feedback(request, **kwargs):
-    html = '反馈'
+    title = '反馈'
     return render(request, 'feedback.html')
 
 
 def home(request, *args, **kwargs):
-    html = '首页'
+    title = '首页'
     blogs = process.blog.get_all()
     print(blogs)
-    return render(request, 'base/base.html', locals())
+    return render(request, 'base/home.html', locals())
 
 
 urlpatterns = [
